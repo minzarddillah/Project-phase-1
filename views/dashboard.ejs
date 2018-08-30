@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <%- include('./header.ejs') %>
+    <br>
+    <center>
+        <h1><b>DASHBOARD</b></h1>
+    </center>
+
+    <% kosan.forEach(kost =>{ %>
+        <div class="list-kosan">
+            <div class="data-kosan">
+                <img src="<%= kost.foto %>" alt="">
+                <div class="action-kosan">
+                    <p><%= kost.name %></p>
+                    <a href="/dashboard/edit/<%= kost.id %>">Edit</a>
+                    <a href="/dashboard/delete/<%= kost.id %>">Delete</a>
+                    <a href="/dashboard/roomList/<%= kost.id %>">List Kamar</a>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</body>
+<style>
+        .header{
+            background-color: #f1f1f1
+        }
+        </style>
+
+</html>

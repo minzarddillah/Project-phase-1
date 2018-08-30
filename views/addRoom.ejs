@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Buat Kost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <%- include('./header.ejs') %>
+    <center>
+        <h1><b>Tambah Kamar Kost</b></h1>
+    </center>
+    <div class="container">
+        <form action="/dashboard/addRoom/<%= idKost %>" method="POST">
+            <div class="form-group">
+                <label for="description">Tentang Kamar</label>
+                <input type="text" class="form-control" name="description" placeholder="AC + TV" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Harga (Rp) </label>
+                <input type="number" class="form-control" name="price" placeholder="800000" required>
+            </div>
+            <div class="form-group">
+                <label for="photo">Link Foto</label>
+                <input type="text" class="form-control" name="photo" placeholder="https://google.com/gambar.png" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buat Kamar Kost</button>
+        </form>
+    </div>
+</body>
+<style>
+    .header {
+        background-color: #f1f1f1
+    }
+</style>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <%- include('./header.ejs') %>
+    <br>
+    <center>
+        <h1><b>CHECKOUT</b></h1>
+        <div class="container">
+
+            <form action="/checkout" method="GET">
+                <label for="namaKost">Nama Kosan</label>
+                <input type="text" class="form-control" name="namaKost" style="text-align:center;" value="<%= kost.name %>" disabled>
+
+                <label for="tipeKost">Tipe Kosan</label>
+                <input type="text" class="form-control" name="tipeKost" style="text-align:center;" value="<%= kost.typeKost %>" disabled>
+
+                <label for="description">Tentang Kamar</label>
+                <input type="text" class="form-control" name="description" style="text-align:center;" value="<%= kamarKost.description %>" disabled>
+
+                <label for="price">Harga Kamar</label>
+                <input type="text" class="form-control" name="price" style="text-align:center;" value="<%= kamarKost.price %>" disabled>
+
+                <label for="checkIn">Tanggal Check In (yyyy-mm-dd)</label>
+                <input type="text" class="form-control" name="checkIn" style="text-align:center;" value="<%= checkIn %>" disabled><br>
+
+                <input type="submit" class="btn btn-primary btn-lg" value="BAYAR">
+            </form>
+    </center>
+    </div>
+
+</body>
+<style>
+    .container {
+        width: 30%;
+    }
+
+    .header {
+        background-color: #f1f1f1
+    }
+</style>
+
+</html>

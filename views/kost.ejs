@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Buat Kost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <%- include('./header.ejs') %>
+
+    <div class="container">
+        <form action="/kost" method="POST">
+            <div class="form-group">
+                <label for="name">Nama Kost</label>
+                <input type="name" class="form-control" name="name" placeholder="Nama Kosan" required>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="alamat">Alamat</label>
+                    <select class="custom-select" name="alamat" required>
+                        <option value="<%= locations[0].id %>" selected><%= locations[0].name %></option>
+                        <% for(let i = 1 ; i < locations.length ; i++) { %>
+                            <option value="<%= locations[i].id  %>"><%= locations[i].name  %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="tipeKost">Tipe Kost</label>
+                    <select class="custom-select" name="tipeKost" required>
+                        <option value="campur" selected>Campur</option>
+                        <option value="putra">Putra</option>
+                        <option value="putri">Putri</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="foto">Link foto</label>
+                <input type="foto" class="form-control" name="foto" placeholder="https://google.com/gambar.png" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buat Kost</button>
+        </form>
+    </div>
+</body>
+<style>
+    .header {
+        background-color: #f1f1f1
+    }
+</style>
+
+</html>
