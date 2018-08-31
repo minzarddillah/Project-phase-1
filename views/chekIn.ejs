@@ -21,7 +21,6 @@
 <body>
     <div class="test">
             <%- include('./header.ejs') %>
-
         </div>
         <center>
                 <p>
@@ -31,7 +30,12 @@
         <h1><b>Check In</b></h1>
         <form action="/listRoom/<%= idKost %>/addRent/<%= idKamar %>" method="POST">
             <input type="date" name="checkIn" min="<%= new Date().getFullYear()+'-'+bulan+'-'+date %>" required> <br> <br>
-            <input type="submit" value="CHECK IN">
+            <% if( kamar.rentStatus ) { %>
+                <button type="button" class="btn btn-danger">RENTED</button>
+            <% }else{ %>
+                
+                <input type="submit" value="CHECK IN">
+            <% } %>
         </form>
     </center>
 

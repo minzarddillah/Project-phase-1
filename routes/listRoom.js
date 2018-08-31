@@ -12,7 +12,6 @@ router.get('/:idKost',(req,res)=>{
         }
     })
     .then(kosan =>{
-        // res.send(kosan)
         kost = kosan
         return kosan.getRooms()
 

@@ -22,14 +22,16 @@ module.exports = (sequelize, DataTypes) => {
         const mailOptions = {
           from: 'demo.project.hacktiv@gmail.com', // sender address
           to: payment.userEmail, // list of receivers
-          subject: 'Payment Berhasil', // Subject line
-          html: `<p>Payment anda berhasil, terima kasih telah menggunakan jasa kami</p><br>
+          subject: 'Payment Berhasil Pindah Kost', // Subject line
+          html: `<p>Payment anda berhasil, terima kasih telah menggunakan Pindah Kost</p> <br>
           <form>
             Nama Kost : ${payment.namaKost} <br>
             Tipe Kost : ${payment.tipeKost} <br>
             Tanggal : ${payment.checkIn} (yyyy-mm-dd)<br>
             Harga : ${payment.price} <br>
-          </form>`
+          </form>
+          <h2> <a href="https://protected-woodland-80787.herokuapp.com/"> Pindah Kost </a> </h2>
+          `
         };
         transporter.sendMail(mailOptions, function (err, info) {
           if(err)

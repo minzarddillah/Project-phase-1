@@ -35,6 +35,7 @@
                     </p>
                     <% if(kamar.rentStatus){ %>
                         <br>
+                        <a href="/listRoom/<%= kost.id %>/addRent/<%= kamar.id %>">SEWA</a>
                         <button type="button" class="btn btn-danger">RENTED</button>
                     <% }else{ %>
                         <a href="/listRoom/<%= kost.id %>/addRent/<%= kamar.id %>">SEWA</a>
