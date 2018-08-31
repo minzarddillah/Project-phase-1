@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+    <% var date = String(new Date().getDate()) %>
+    <% var bulan = String(new Date().getMonth()+1)  %>
+    <% if(bulan.length === 1 ) { %>
+        <% bulan = 0+bulan %>
+    <% } %>
+    <% if(date.length === 1 ) { %>
+        <% date = 0+date %>
+    <% } %>
+<body>
+    <div class="test">
+            <%- include('./header.ejs') %>
+
+        </div>
+        <center>
+                <p>
+                <h2><b>Kosan <%= kost.name %></b></h2>
+                    <%= kost.Location.name %>, <%= kost.alamat %>
+                </p> <br> <br>
+        <h1><b>Check In</b></h1>
+        <form action="/listRoom/<%= idKost %>/addRent/<%= idKamar %>" method="POST">
+            <input type="date" name="checkIn" min="<%= new Date().getFullYear()+'-'+bulan+'-'+date %>" required> <br> <br>
+            <input type="submit" value="CHECK IN">
+        </form>
+    </center>
+
+    
+</body>
+<style>
+    .header {
+        background-color: #f1f1f1
+    }
+    div.test {
+        background-size: 100% 150%;
+        background-position: center;
+        height: 550px;
+        animation: animasiHeader 10s infinite;
+    }
+
+    @keyframes animasiHeader {
+        0% {background-image: url("<%= kamar.photo %>");}
+        100% {background-image: url("<%= kost.foto %>");}
+        }
+</style>
+</html>

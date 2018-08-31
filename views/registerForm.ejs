@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+    <%- include('./header.ejs') %>
+    <br>
+    <center>
+        <h1><b>REGISTER</b></h1>
+    </center>
+    <div class="container">
+        <form action="/register" method="POST">
+            <div class="form-row">
+                <div class="col">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" placeholder="First name" name="firstName" required>
+                </div>
+                <div class="col">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last name" name="lastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    <% if(err){ %>
+                    <%= err %>
+                    <% }else{ %>
+                    Email
+                    <% } %></label>
+                <input type="email" class="form-control" name="email" placeholder="lorem@ipsum.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            Gender
+            <select class="custom-select" name="gender" required>
+                <option value="female" selected>Female</option>
+                <option value="male">Male</option>
+            </select><br><br>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+    </div>
+</body>
+<style>
+        .header{
+            background-color: #f1f1f1
+        }
+        </style>
+
+</html>
