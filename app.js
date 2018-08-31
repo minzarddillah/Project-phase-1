@@ -2,6 +2,7 @@ const express   = require(`express`);
 const routes    = require('./routes');
 const session   = require('express-session');
 const app       = express();
+const port      = process.env.PORT || 4000;
 
 app.set('view engine',`ejs`);
 
@@ -22,6 +23,6 @@ app.use('/',routes);
 
 
 
-app.listen(8080,()=>{
-    console.log(`localhost:8080`);
+app.listen(port,()=>{
+    console.log(`Server Start on ${port}`);
 });
