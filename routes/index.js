@@ -20,9 +20,14 @@ router.get('/',(req,res)=>{
     Locations.findAll()
         .then(kota =>{
             locations = kota
-            return Hotel.findAll()
+            return Hotel.findAll({
+                include: {
+                    model: Locations
+                }
+            })
         })
         .then(kosan =>{
+            // res.send(kosan)
             res.render(`home`,{locations,kosan})
         })
 })

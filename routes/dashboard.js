@@ -22,10 +22,14 @@ router.get('/',(req,res)=>{
     User.findById(req.session.user.id)
         .then(user =>{
             return user.getHotels({
-                order: [[`id`,`ASC`]]
+                order: [[`id`,`ASC`]],
+                include: {
+                    model: Location
+                }
             })
         })
         .then(kosan =>{
+            // res.send(kosan)
             res.render(`dashboard`,{kosan})
         })
         .catch(err =>{

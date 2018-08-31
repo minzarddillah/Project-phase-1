@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.INTEGER,
     typeKost: DataTypes.STRING,
     foto: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    alamat: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate: (kost,options)=>{

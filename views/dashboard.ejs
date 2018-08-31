@@ -23,7 +23,9 @@
             <div class="data-kosan">
                 <img src="<%= kost.foto %>" alt="">
                 <div class="action-kosan">
-                    <p><%= kost.name %></p>
+                    <center>
+                        <p><%= kost.name %> <br> <%= kost.Location.name %> <br><%= kost.alamat %></p>
+                    </center>
                     <a href="/dashboard/edit/<%= kost.id %>">Edit</a>
                     <a href="/dashboard/delete/<%= kost.id %>">Delete</a>
                     <a href="/dashboard/roomList/<%= kost.id %>">List Kamar</a>

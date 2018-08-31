@@ -25,6 +25,7 @@
             <div class="action-kosan">
                 <center>
                     <p>
+                        <%= kost.Location.name %> <br> <%= kost.alamat %> <br>
                         <%= kamar.description %> <br> <br>
                         <% if(String(kamar.price).length === 6) { %>
                             Rp. <%= String(kamar.price).slice(0,3) %>.<%= String(kamar.price).slice(3) %>

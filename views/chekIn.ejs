@@ -19,11 +19,15 @@
         <% date = 0+date %>
     <% } %>
 <body>
-    <%- include('./header.ejs') %>
-    <br>
-    
-    
-    <center>
+    <div class="test">
+            <%- include('./header.ejs') %>
+
+        </div>
+        <center>
+                <p>
+                <h2><b>Kosan <%= kost.name %></b></h2>
+                    <%= kost.Location.name %>, <%= kost.alamat %>
+                </p> <br> <br>
         <h1><b>Check In</b></h1>
         <form action="/listRoom/<%= idKost %>/addRent/<%= idKamar %>" method="POST">
             <input type="date" name="checkIn" min="<%= new Date().getFullYear()+'-'+bulan+'-'+date %>" required> <br> <br>
@@ -34,9 +38,19 @@
     
 </body>
 <style>
-        .header{
-            background-color: #f1f1f1
-        }
-        </style>
+    .header {
+        background-color: #f1f1f1
+    }
+    div.test {
+        background-size: 100% 150%;
+        background-position: center;
+        height: 550px;
+        animation: animasiHeader 10s infinite;
+    }
 
+    @keyframes animasiHeader {
+        0% {background-image: url("<%= kamar.photo %>");}
+        100% {background-image: url("<%= kost.foto %>");}
+        }
+</style>
 </html>

@@ -2,11 +2,17 @@ const router = require(`express`).Router()
 const Model = require('../models/')
 const Room = Model.Room
 const Hotel = Model.Hotel
+const Location = Model.Location
 
 router.get('/:idKost',(req,res)=>{
     var kost = null
-    Hotel.findById(req.params.idKost)
+    Hotel.findById(req.params.idKost,{
+        include: {
+            model: Location
+        }
+    })
     .then(kosan =>{
+        // res.send(kosan)
         kost = kosan
         return kosan.getRooms()
 
@@ -26,17 +32,27 @@ router.use('/:idKost/addRent',(req,res,next)=>{
 })
 
 router.get('/:idKost/addRent/:idKamar',(req,res)=>{
-
+    let idKost = req.params.idKost
     let idKamar = req.params.idKamar
-    Room.findById(idKamar)
+    let kost = null
+
+    Hotel.findById(idKost,{
+        include: {
+            model: Location
+        }
+    })
+    .then(kosan =>{
+        kost = kosan
+        return Room.findById(idKamar)
+    })
     .then(kamar =>{
+        // res.send(kost)
         req.session.inovice = kamar
-        res.render(`chekIn`,{kamar, idKost:req.params.idKost, idKamar})
+        res.render(`chekIn`,{kamar, idKost:req.params.idKost, idKamar, kost})
     })
 })
 
 router.post('/:idKost/addRent/:idKamar',(req,res)=>{
-
     let idKamar = req.params.idKamar
     let kamarKost = null
     Room.findById(idKamar)

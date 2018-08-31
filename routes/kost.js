@@ -1,5 +1,5 @@
 const router = require(`express`).Router()
-const Kost = require('../models/').Hotel
+const Hotel = require('../models/').Hotel
 const Locations = require('../models/').Location
 
 router.use('/',(req,res,next)=>{
@@ -21,14 +21,16 @@ router.get('/',(req,res)=>{
 router.post('/',(req,res)=>{
     let dataKost = {    
         name: req.body.name,
-        address: req.body.alamat,
+        address: req.body.kota,
         typeKost: req.body.tipeKost,
         foto: req.body.foto,
-        userId: req.session.user.id
+        userId: req.session.user.id,
+        alamat: req.body.alamat
     }
-    Kost.create(dataKost)
+    // res.send(dataKost)
+    Hotel.create(dataKost)
     .then(kosan =>{
-        res.redirect('/dashboard')
+            res.redirect('/dashboard')
     })
     .catch(err =>{
         res.send(err)

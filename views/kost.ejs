@@ -23,8 +23,8 @@
             </div>
             <div class="form-row">
                 <div class="col">
-                    <label for="alamat">Alamat</label>
-                    <select class="custom-select" name="alamat" required>
+                    <label for="kota">Kota</label>
+                    <select class="custom-select" name="kota" required>
                         <option value="<%= locations[0].id %>" selected><%= locations[0].name %></option>
                         <% for(let i = 1 ; i < locations.length ; i++) { %>
                             <option value="<%= locations[i].id  %>"><%= locations[i].name  %></option>
@@ -41,8 +41,10 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="alamat">Alamat Lengkap</label>
+                <input type="text" class="form-control" name="alamat" placeholder="Jl. Pahlawan, Bulak Kapal" required>
                 <label for="foto">Link foto</label>
-                <input type="foto" class="form-control" name="foto" placeholder="https://google.com/gambar.png" required>
+                <input type="text" class="form-control" name="foto" placeholder="https://google.com/gambar.png" required>
             </div>
             <button type="submit" class="btn btn-primary">Buat Kost</button>
         </form>
