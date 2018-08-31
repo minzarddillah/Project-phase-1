@@ -27,12 +27,18 @@ router.get('/',(req,res)=>{
             })
         })
         .then(kosan =>{
-            // res.send(kosan)
             res.render(`home`,{locations,kosan})
+        })
+        .catch(err =>{
+            res.send(err)
         })
 })
 
 router.post('/find',(req,res)=>{
+    let error = null
+    if(req.query.error){
+        error = req.query.error
+    }
 
     Locations.findOne({
         include: [{
@@ -54,10 +60,22 @@ router.post('/find',(req,res)=>{
     .then(location =>{
         let kosanYangKosong = []
         let semuaKosan = []
-        location.Hotels.forEach(kost => {
-            kost.Rooms.forEach(kamar =>{
-                if(!kamar.rentStatus){
-                    kosanYangKosong.push({
+        if(location){
+            location.Hotels.forEach(kost => {
+                kost.Rooms.forEach(kamar =>{
+                    if(!kamar.rentStatus){
+                        kosanYangKosong.push({
+                            kostName: kost.name,
+                            kostId: kost.id,
+                            id: kamar.id,
+                            kostId: kamar.kostId,
+                            rentStatus: kamar.rentStatus,
+                            description: kamar.description,
+                            price: kamar.price,
+                            photo: kamar.photo
+                        })
+                    }
+                    semuaKosan.push({
                         kostName: kost.name,
                         kostId: kost.id,
                         id: kamar.id,
@@ -67,28 +85,29 @@ router.post('/find',(req,res)=>{
                         price: kamar.price,
                         photo: kamar.photo
                     })
-                }
-                semuaKosan.push({
-                    kostName: kost.name,
-                    kostId: kost.id,
-                    id: kamar.id,
-                    kostId: kamar.kostId,
-                    rentStatus: kamar.rentStatus,
-                    description: kamar.description,
-                    price: kamar.price,
-                    photo: kamar.photo
                 })
-            })
-        });
-        if(req.body.filter){
-            res.render(`findKamar`,{ kosan: kosanYangKosong })
+            });
         }else{
-            res.render(`findKamar`,{ kosan: semuaKosan })
+            res.redirect('/find?error="Kamar Kost Tidak Ditemukan"')
+        }
+        if(req.body.filter){
+            res.render(`findKamar`,{ kosan: kosanYangKosong, error })
+        }else{
+            res.render(`findKamar`,{ kosan: semuaKosan, error })
         }
 
         // res.send(kosanYangKosong)
     })
-    
+})
+
+router.get('/find',(req,res)=>{
+    let error = null
+
+    if(req.query.error){
+        error = req.query.error
+    }
+
+    res.render(`findKamar`, { kosan: [], error })
 })
 
 router.use('/register',register)

@@ -15,6 +15,9 @@
     <%- include('./header.ejs') %>
     <br>
     <center>
+        <% if(error) { %>
+            <h1><%= error %></h1>
+        <% } %>
     </center>
 
     <% kosan.forEach(kamar =>{ %>
