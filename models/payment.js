@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
           from: 'demo.project.hacktiv@gmail.com', // sender address
           to: payment.userEmail, // list of receivers
           subject: 'Payment Berhasil Pindah Kost', // Subject line
-          html: `<p>Payment anda berhasil, terima kasih telah menggunakan Pindah Kost</p> <br>
+          html: `<h3>Payment anda berhasil, terima kasih telah menggunakan Pindah Kost</h3> <br>
           <form>
             Nama Kost : ${payment.namaKost} <br>
             Tipe Kost : ${payment.tipeKost} <br>
