@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
           service: 'gmail',
           auth: {
             user: 'demo.project.hacktiv@gmail.com',
-            pass: 'm3st1ny4k4ut4hu'
+            pass: 'process.env.PASSWORD'
           }
         });
         const mailOptions = {
